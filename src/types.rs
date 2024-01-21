@@ -1,6 +1,6 @@
 use derive_builder::Builder;
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
 pub enum Month {
     January,
     February,
@@ -14,6 +14,44 @@ pub enum Month {
     October,
     November,
     December,
+}
+
+impl Month {
+
+    pub fn next(self) -> Self {
+        match self {
+            Month::January => Month::February,
+            Month::February => Month::March,
+            Month::March => Month::April,
+            Month::April => Month::May,
+            Month::May => Month::June,
+            Month::June => Month::July,
+            Month::July => Month::August,
+            Month::August => Month::September,
+            Month::September => Month::October,
+            Month::October => Month::November,
+            Month::November => Month::December,
+            Month::December => Month::January,
+        }
+    }
+
+    pub fn prev(self) -> Self {
+        match self {
+            Month::January => Month::December,
+            Month::February => Month::January,
+            Month::March => Month::February,
+            Month::April => Month::March,
+            Month::May => Month::April,
+            Month::June => Month::May,
+            Month::July => Month::June,
+            Month::August => Month::July,
+            Month::September => Month::August,
+            Month::October => Month::September,
+            Month::November => Month::October,
+            Month::December => Month::November,
+        }
+    }
+
 }
 
 impl From<u8> for Month {
@@ -98,7 +136,6 @@ pub struct DayNumber {
     day: u8,
 }
 
-#[allow(dead_code)]
 impl DayNumber {
     pub fn new(value: u8) -> DayNumber {
         match value {
@@ -185,5 +222,35 @@ mod tests {
     #[should_panic]
     fn test_month_into_greater_12() {
         let _: Month = 13.into();
+    }
+
+    #[test]
+    fn test_month_prev() {
+        assert_eq!(Month::December, Month::January.prev());
+        assert_eq!(Month::January, Month::February.prev());
+        assert_eq!(Month::February, Month::March.prev());
+        assert_eq!(Month::March, Month::April.prev());
+        assert_eq!(Month::April, Month::May.prev());
+        assert_eq!(Month::May, Month::June.prev());
+        assert_eq!(Month::June, Month::July.prev());
+        assert_eq!(Month::July, Month::August.prev());
+        assert_eq!(Month::September, Month::October.prev());
+        assert_eq!(Month::October, Month::November.prev());
+        assert_eq!(Month::November, Month::December.prev());
+    }
+
+    #[test]
+    fn test_month_next() {
+        assert_eq!(Month::February, Month::January.next());
+        assert_eq!(Month::March, Month::February.next());
+        assert_eq!(Month::April, Month::March.next());
+        assert_eq!(Month::May, Month::April.next());
+        assert_eq!(Month::June, Month::May.next());
+        assert_eq!(Month::July, Month::June.next());
+        assert_eq!(Month::August, Month::July.next());
+        assert_eq!(Month::September, Month::August.next());
+        assert_eq!(Month::November, Month::October.next());
+        assert_eq!(Month::December, Month::November.next());
+        assert_eq!(Month::January, Month::December.next());
     }
 }
