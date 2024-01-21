@@ -1,0 +1,22 @@
+[package]
+name = "production-calendar"
+version = "0.1.0"
+edition = "2021"
+authors = [
+    "Aleksandr Rassamagin"
+]
+categories = ["calendar"]
+keywords = ["production", "calendar"]
+description = "Library for work with production calendar"
+rust-version = "1.65"
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/xsayler/production-calendar"
+repository = "https://github.com/xsayler/production-calendar"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+derive_builder = "0.12.0"
+time = "0.3.31"
+
