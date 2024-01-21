@@ -7,7 +7,7 @@ authors = [
 ]
 categories = ["calendar"]
 keywords = ["production", "calendar"]
-description = "Production calendar loader"
+description = "Library for work with production calendar"
 rust-version = "1.75"
 license = "MIT"
 readme = "README.md"
