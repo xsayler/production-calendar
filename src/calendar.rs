@@ -31,6 +31,10 @@ impl ProductionCalendar {
         self.days.len()
     }
 
+    pub fn get_work_days_count(&self) -> usize {
+        self.days.iter().filter(|day| day.day_type == DayType::Working || day.day_type == DayType::PreHoliday).count()
+    }
+
     pub fn get_index(&self, date: Date) -> Result<usize, Box<dyn Error>> {
         self.days
             .iter()
