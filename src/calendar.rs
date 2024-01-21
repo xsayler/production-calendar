@@ -32,7 +32,10 @@ impl ProductionCalendar {
     }
 
     pub fn get_work_days_count(&self) -> usize {
-        self.days.iter().filter(|day| day.day_type == DayType::Working || day.day_type == DayType::PreHoliday).count()
+        self.days
+            .iter()
+            .filter(|day| day.day_type == DayType::Working || day.day_type == DayType::PreHoliday)
+            .count()
     }
 
     pub fn get_index(&self, date: Date) -> Result<usize, Box<dyn Error>> {
@@ -188,6 +191,20 @@ mod tests {
                 .get_index(Date::from_calendar_date(2024, Month::January.into(), 20).unwrap())
                 .unwrap()
         );
+    }
+
+    #[test]
+    fn test_get_days_count() {
+        let calendar = make_calendar();
+
+        assert_eq!(366, calendar.get_days_count());
+    }
+
+    #[test]
+    fn test_get_work_days_count() {
+        let calendar = make_calendar();
+
+        assert_eq!(256, calendar.get_work_days_count());
     }
 
     #[test]
