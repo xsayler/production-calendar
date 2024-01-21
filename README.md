@@ -11,9 +11,24 @@ The library allows you to calculate the number of working days in a month, etc. 
 pub fn main() {
     let calendar_2024 = make_calendar();
 
-    println!("Working days in January: {}", calendar_2024.count_work_days_in_month(Month::January).unwrap());
-    println!("Working days in January up to and including the 15th of January: {}", calendar_2024.count_work_days_in_month_before(Month::January, 15.into()).unwrap());
-    println!("Working days in January after January 15: {}", calendar_2024.count_work_days_in_month_after(Month::January, 15.into()).unwrap());
+    println!(
+        "Working days in January: {}",
+        calendar_2024
+            .count_work_days_in_month(Month::January)
+            .unwrap()
+    );
+    println!(
+        "Working days in January up to and including the 15th of January: {}",
+        calendar_2024
+            .count_work_days_in_month_before(Month::January, 15.into())
+            .unwrap()
+    );
+    println!(
+        "Working days in January after January 15: {}",
+        calendar_2024
+            .count_work_days_in_month_after(Month::January, 15.into())
+            .unwrap()
+    );
 }
 ```
 
