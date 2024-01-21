@@ -21,4 +21,4 @@ For a full example, see: [examples](https://github.com/xsayler/production-calend
 
 ## License
 
-This project is licensed under [MIT license](https://github.com/xsayler/async-gigachat/blob/main/LICENSE).
+This project is licensed under [MIT license](https://github.com/xsayler/production-calendar/blob/main/LICENSE).
